@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import './src/app/styles/_variables.scss';
+@import './node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+body {
+    background-color: #edeff0;
+    overflow-x: hidden;
+}
