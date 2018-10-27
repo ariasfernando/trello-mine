@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { TrelloApiService } from '../../shared/trello-api.service';
+import { TrelloApiService } from '../../core/trello-api/trello-api.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TrelloApiService } from '../../shared/trello-api.service';
+import { TrelloApiService } from '../../core/trello-api/trello-api.service';
 
 @Component({
   selector: 'app-mis-tarjetas',
