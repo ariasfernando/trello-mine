@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { environment } from './../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class TrelloApiService {

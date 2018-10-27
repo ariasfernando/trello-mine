@@ -50,7 +50,7 @@
               <td><span *ngIf="getBoardByID( card.idBoard ) !== null">{{ getBoardByID( card.idBoard ).name }}</span></td>
               <td><span>{{ card.status }}</span></td>-->
               <td>
-                <app-mis-tarjetas-list-date [fecha]="card.due"></app-mis-tarjetas-list-date>
+                <app-mis-tarjetas-list-date [fecha]="card.due" [cerrado]="card.closed"></app-mis-tarjetas-list-date>
               </td>
             </tr>
           </tbody>
