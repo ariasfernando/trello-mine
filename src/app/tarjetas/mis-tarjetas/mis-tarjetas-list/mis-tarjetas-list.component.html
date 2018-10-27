@@ -45,12 +45,14 @@
           <tbody>
             <tr *ngFor="let card of tarjetas">
               <td><a target="_blank" href="{{ card.shortUrl }}">{{ card.name }}</a></td>
-              <td><p *ngFor="let label of card.labels.sort()" class="label label-default" [ngStyle]="{ 'background-color': getLabelColor( label.color ) }">{{ label.name }}</p></td>
-              <!--<td><span *ngIf="getOrganizationByCardID( card.idBoard ) !== undefined">{{ getOrganizationByCardID( card.idBoard ).displayName }}</span></td>
-              <td><span *ngIf="getBoardByID( card.idBoard ) !== null">{{ getBoardByID( card.idBoard ).name }}</span></td>
-              <td><span>{{ card.status }}</span></td>-->
               <td>
-                <app-mis-tarjetas-list-date [fecha]="card.due" [cerrado]="card.closed"></app-mis-tarjetas-list-date>
+                <p *ngFor="let label of card.labels.sort()" class="badge badge-secondary" [ngStyle]="{ 'background-color': getLabelColor( label.color ) }">{{ label.name }}</p>
+              </td>
+<!--               <td><span *ngIf="getOrganizationByCardID( card.idBoard ) !== undefined">{{ getOrganizationByCardID( card.idBoard ).displayName }}</span></td>
+              <td><span *ngIf="getBoardByID( card.idBoard ) !== null">{{ getBoardByID( card.idBoard ).name }}</span></td>
+ -->              <td><span>{{ card.status }}</span></td>
+              <td>
+                <app-mis-tarjetas-list-date [fecha]="card.due" [cerrado]="card.dueComplete"></app-mis-tarjetas-list-date>
               </td>
             </tr>
           </tbody>

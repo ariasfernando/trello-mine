@@ -26,7 +26,7 @@ export class TrelloApiService {
     const query = '/members/me/cards?filter=visible&stickers=true&attachments=true&members=true';
     const identifier = `&${token}&key=${environment.trelloKey}`;
     return this.http.get( this.trelloApiUrl + query + identifier).pipe(
-      map( (cards: Array<any>) => cards.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()))
+      map( (cards: Array<any>) => cards.filter( card => card.dueComplete === false ) )
     );
   }
 }

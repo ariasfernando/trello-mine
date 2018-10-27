@@ -8,35 +8,43 @@ import { DateCompareService } from '../../../../core/date-compare/date-compare.s
 })
 export class MisTarjetasListDateComponent implements OnInit {
 
-  @Input() fecha: Date;
+  @Input() fecha: string;
   @Input() cerrado: boolean;
   @HostBinding( 'attr.class' ) style: string;
+
+  public label: string;
+  public fechaDate: Date;
 
   constructor(
     private dateCompare: DateCompareService
   ) { }
 
   ngOnInit() {
-    console.log( this.cerrado );
+    this.fechaDate = new Date( this.fecha );
     if ( this.fecha === null ) {
-      this.style = 'label label-default';
+      this.style = 'badge badge-secondary';
+      this.label = 'no asignada';
     } else if ( this.cerrado ) {
-      this.style = 'label label-success';
+      this.style = 'badge badge-success';
+      this.label = 'realizada';
     } else {
       this.setDateStyles();
     }
   }
 
   private setDateStyles(): void {
-    switch ( this.dateCompare.compareDatesOnly( new Date( this.fecha ), new Date() ) ) {
+    switch ( this.dateCompare.compareDatesOnly( this.fechaDate, new Date() ) ) {
       case 1:
-        this.style = 'label label-info';
+        this.style = 'badge badge-info';
+        this.label = 'próximos días';
         break;
       case -1:
-        this.style = 'label label-danger';
+        this.style = 'badge badge-danger';
+        this.label = 'vencida';
       break;
       case 0:
-        this.style = 'label label-warning';
+        this.style = 'badge badge-warning';
+        this.label = 'hoy';
         break;
     }
   }
