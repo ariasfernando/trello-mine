@@ -1,0 +1,61 @@
+<div class="container" id="tabla">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="scroll">
+        <table *ngIf="tarjetas && tarjetas.length > 0" class="table">
+          <thead>
+            <tr>
+              <th>
+                <span>Nombre</span>
+                <div class="btn-group btn-group-xs" role="group">
+<!--                     <button class="btn btn-default" (click)="sortCardsDesc()">
+                    <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                  </button>
+                  <button class="btn btn-default" (click)="sortCardsAsc()">
+                    <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+                  </button> -->
+                </div>
+              </th>
+              <th>Etiquetas</th>
+              <th>Vencimiento</th>
+<!--                 <th>
+                <span>Nombre</span>
+                <div class="btn-group btn-group-xs" role="group">
+                  <button class="btn btn-default" (click)="sortOrg ( true )">
+                    <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                  </button>
+                  <button class="btn btn-default" (click)="sortOrg( false )">
+                    <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+                  </button>
+                </div>
+              </th>
+              <th>
+                <span>Tablero</span>
+                  <div class="btn-group btn-group-xs" role="group">
+                    <button class="btn btn-default" (click)="sortBoardDesc()">
+                      <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-default" (click)="sortBoardAsc()">
+                      <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+                    </button>
+                  </div>
+              </th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let card of tarjetas">
+              <td><a target="_blank" href="{{ card.shortUrl }}">{{ card.name }}</a></td>
+              <td><p *ngFor="let label of card.labels.sort()" class="label label-default" [ngStyle]="{ 'background-color': getLabelColor( label.color ) }">{{ label.name }}</p></td>
+              <!--<td><span *ngIf="getOrganizationByCardID( card.idBoard ) !== undefined">{{ getOrganizationByCardID( card.idBoard ).displayName }}</span></td>
+              <td><span *ngIf="getBoardByID( card.idBoard ) !== null">{{ getBoardByID( card.idBoard ).name }}</span></td>
+              <td><span>{{ card.status }}</span></td>-->
+              <td>
+                <app-mis-tarjetas-list-date [fecha]="card.due"></app-mis-tarjetas-list-date>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

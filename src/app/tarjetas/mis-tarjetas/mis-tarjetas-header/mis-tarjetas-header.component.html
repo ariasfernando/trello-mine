@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" (click)="showMenu = !showMenu" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Mis tarjetas activas</a>
+    </div>
+
+    <div class="navbar-collapse" id="menu-principal" [ngClass]="{ 'collapse': !showMenu }">
+
+      <div class="navbar-form navbar-right">
+
+        <!--<select *ngIf="this.organizations.length > 0" class="form-control" (change)="filterByOrganization( $event.srcElement.value )">
+
+            <option value="" selected>Todos</option>
+            <option value="_personal">Sin Grupo</option>
+
+          <optgroup label="Organizaciones">
+              <option *ngFor="let organization of organizations | orderBy: 'displayName'" value="{{ organization.id }}">{{ organization.displayName }}</option>
+          </optgroup>
+        </select>-->
+
+        <!--<button class="btn btn-default" (click)="importCards()">Traer tarjetas!</button>-->
+
+      </div>
+
+      <ul class="nav navbar-nav navbar-left">
+        <li *ngIf="cantidadTarjetas > 0">
+          <p class="navbar-text">Tenés <b>{{ cantidadTarjetas }}</b> tarjetas asignadas</p>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</nav>

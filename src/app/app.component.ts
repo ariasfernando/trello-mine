@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Http } from '@angular/http';
 import * as _ from 'lodash';
 
-declare var Trello: any;
+/*declare var Trello: any;*/
 
 @Component({
   selector: 'app-root',
@@ -11,24 +11,23 @@ declare var Trello: any;
 })
 export class AppComponent implements OnInit {
 
-  cards: Array<any>;
-  idBoards: Array<any>;
+ /*idBoards: Array<any>;
   idOrganizations: Array<any>;
   boards: Array<any>;
   organizations: Array<any>;
   showButton = false;
   showMenu = false;
-  idOrganization: string;
+  idOrganization: string;*/
 
-  constructor( private ref: ChangeDetectorRef ) {
+  constructor( /*private ref: ChangeDetectorRef*/ ) {/*
     this.idOrganization = '';
     this.cards = [];
     this.boards = [];
-    this.organizations = [];
+    this.organizations = [];*/
   }
 
   ngOnInit() {
-
+/*
     Trello.authorize({
       type: 'popup',
       name: 'Migración desde Trello',
@@ -39,12 +38,12 @@ export class AppComponent implements OnInit {
       expiration: 'never',
       success: this.authenticationSuccess.bind( this ),
       error: this.error
-    });
+    });*/
 
   }
 
   // Public methods
-
+/*
   public importCards( ) {
     Trello.get('/members/me/cards?filter=visible&stickers=true&attachments=true&members=true', ( success ) => {
       this.cards = success;
@@ -223,5 +222,5 @@ export class AppComponent implements OnInit {
   private error ( error ) {
     console.log ( error );
   }
-
+*/
 }
