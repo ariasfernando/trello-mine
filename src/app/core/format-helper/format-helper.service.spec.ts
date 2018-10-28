@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DateCompareService } from './date-compare.service';
+import { FormatHelperService } from './format-helper.service';
 
-describe('DateCompareService', () => {
+describe('FormatHelperService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DateCompareService = TestBed.get(DateCompareService);
+    const service: FormatHelperService = TestBed.get(FormatHelperService);
     expect(service).toBeTruthy();
   });
 });

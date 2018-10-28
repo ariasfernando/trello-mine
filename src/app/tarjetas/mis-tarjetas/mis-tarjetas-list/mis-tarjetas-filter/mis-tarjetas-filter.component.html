@@ -1,0 +1,5 @@
+<span>Mostrar&nbsp;</span>
+<div class="btn-group">
+    <button class="btn btn-sm" (click)="removeNoDue()" [ngClass]="{ 'btn-light' : filterAll, 'btn-dark': !filterAll }">Con fecha</button>
+    <button class="btn btn-sm" (click)="addNoDue()" [ngClass]="{ 'btn-light' : !filterAll, 'btn-dark': filterAll }">Todas</button>
+</div>

@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -12,8 +11,7 @@ export class TrelloApiService {
   private trelloApiUrl = 'https://api.trello.com/1/';
 
   constructor(
-    private http: HttpClient,
-    private location: Location
+    private http: HttpClient
   ) { }
 
   public authorize(): void {

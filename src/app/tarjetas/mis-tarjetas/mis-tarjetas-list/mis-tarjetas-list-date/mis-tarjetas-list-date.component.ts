@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, HostBinding } from '@angular/core';
-import { DateCompareService } from '../../../../core/date-compare/date-compare.service';
+import { FormatHelperService } from '../../../../core/format-helper/format-helper.service';
 
 @Component({
   selector: 'app-mis-tarjetas-list-date',
@@ -16,7 +16,7 @@ export class MisTarjetasListDateComponent implements OnInit {
   public fechaDate: Date;
 
   constructor(
-    private dateCompare: DateCompareService
+    private formatHelper: FormatHelperService
   ) { }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class MisTarjetasListDateComponent implements OnInit {
   }
 
   private setDateStyles(): void {
-    switch ( this.dateCompare.compareDatesOnly( this.fechaDate, new Date() ) ) {
+    switch ( this.formatHelper.compareDatesOnly( this.fechaDate, new Date() ) ) {
       case 1:
         this.style = 'badge badge-info';
         this.label = 'próximos días';

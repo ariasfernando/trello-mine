@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuComponent } from './menu/menu.component';
-import { DateCompareService } from './date-compare/date-compare.service';
-import { TrelloApiService } from '../core/trello-api/trello-api.service';
 import { HttpClientModule } from '@angular/common/http';
+
+import { TrelloApiService } from '../core/trello-api/trello-api.service';
+import { FormatHelperService } from './format-helper/format-helper.service';
+
 import { LoggedInGuard } from '../core/logged-in/logged-in.guard';
+
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   imports: [
@@ -12,7 +15,7 @@ import { LoggedInGuard } from '../core/logged-in/logged-in.guard';
     HttpClientModule
   ],
   providers: [
-    DateCompareService,
+    FormatHelperService,
     TrelloApiService,
     LoggedInGuard
   ],

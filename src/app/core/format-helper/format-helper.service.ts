@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class DateCompareService {
+export class FormatHelperService {
 
   constructor() { }
 
@@ -16,4 +16,5 @@ export class DateCompareService {
       return -1;
     }
   }
+
 }
