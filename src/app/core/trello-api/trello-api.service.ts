@@ -27,4 +27,16 @@ export class TrelloApiService {
       map( (cards: Array<any>) => cards.filter( card => card.dueComplete === false ) )
     );
   }
+
+  public getBoards( token ): Observable<any>{
+    const query = '/members/me/boards';
+    const identifier = `?${token}&key=${environment.trelloKey}`;
+    return this.http.get( this.trelloApiUrl + query + identifier).pipe();
+  }
+
+  public getOrganizations( token ): Observable<any>{
+    const query = '/members/me/organizations';
+    const identifier = `?${token}&key=${environment.trelloKey}`;
+    return this.http.get( this.trelloApiUrl + query + identifier).pipe();
+  }
 }

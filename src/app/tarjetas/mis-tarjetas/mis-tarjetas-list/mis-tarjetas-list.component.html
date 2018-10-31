@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col">
       <app-mis-tarjetas-filter [list]="originalList" (onListUpdate)="onListUpdate( $event )"></app-mis-tarjetas-filter>
-      <table *ngIf="tarjetas && tarjetas.length > 0" class="table">
+      
+      <!--<table *ngIf="tarjetas && tarjetas.length > 0" class="table">
         <thead>
           <tr>
             <th>
@@ -36,7 +37,8 @@
             </td>
           </tr>
         </tbody>
-      </table>
+      </table>-->
+      <app-mis-tarjetas-list-item *ngFor="let card of tarjetas" [card]="card"></app-mis-tarjetas-list-item>
     </div>
   </div>
 </div>
