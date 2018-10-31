@@ -1,7 +1,7 @@
 <div class="container" id="tabla">
   <div class="row">
     <div class="col">
-      <app-mis-tarjetas-filter [list]="originalList" (onListUpdate)="onListUpdate( $event )"></app-mis-tarjetas-filter>
+      <app-mis-tarjetas-filter class="mt-4 mb-4" [list]="originalList" (onListUpdate)="onListUpdate( $event )"></app-mis-tarjetas-filter>
       
       <!--<table *ngIf="tarjetas && tarjetas.length > 0" class="table">
         <thead>
@@ -28,9 +28,6 @@
               <b ngbTooltip="{{ card.desc }}" placement="right">{{ card.name }}</b>&nbsp;
               <a target="_blank" href="{{ card.shortUrl }}" >Enlace</a>
               <br/>
-              <span *ngFor="let label of card.labels.sort()">
-                <span class="badge badge-secondary" [ngStyle]="{ 'background-color': getLabelColor( label.color ) }">{{ label.name }}</span>&nbsp;
-              </span>
             </td>
             <td>
               <app-mis-tarjetas-list-date [fecha]="card.due" [cerrado]="card.dueComplete"></app-mis-tarjetas-list-date>

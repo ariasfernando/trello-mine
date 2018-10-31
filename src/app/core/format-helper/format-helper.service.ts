@@ -17,4 +17,53 @@ export class FormatHelperService {
     }
   }
 
+  public getLabelColor( labelColor: string ): string {
+    switch (labelColor ) {
+
+      case 'yellow':
+        return '#f2d600';
+
+      case 'orange':
+        return '#ffab4a';
+
+      case 'red':
+        return '#eb5a46';
+
+      case 'blue':
+        return '#0079bf';
+
+      case 'green':
+        return '#61bd4f';
+
+      case 'lime':
+        return '#51e898';
+
+      case 'sky':
+        return '#00c2e0';
+
+      case 'pink':
+        return '#ff80ce';
+
+      case 'black':
+        return '#272727';
+
+      default:
+        return labelColor;
+    }
+
+  }
+
+  public getStatusByDate( dateToCompare: Date ) {
+    switch ( this.compareDatesOnly( dateToCompare, new Date() ) ) {
+      case 1:
+        return 'info';
+      case -1:
+        return 'danger';
+      case 0:
+        return 'warning';
+      default:
+        return '';
+    }
+  }
+
 }

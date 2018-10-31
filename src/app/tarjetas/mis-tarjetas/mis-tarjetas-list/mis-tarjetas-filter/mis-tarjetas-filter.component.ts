@@ -13,7 +13,8 @@ export class MisTarjetasFilterComponent implements OnChanges {
   public filterAll: boolean;
   private originalList: any[];
 
-  constructor() {
+  constructor(
+  ) {
     this.onListUpdate = new EventEmitter<any[]>();
   }
 
@@ -26,9 +27,21 @@ export class MisTarjetasFilterComponent implements OnChanges {
     this.onListUpdate.emit( this.originalList.filter( item => item.due !== null ) );
   }
 
-  public addNoDue(): void {
+  public addNoDue(): void { 
     this.filterAll = false;
     this.onListUpdate.emit( this.originalList );
+  }
+
+  public filterOnlyNextDays(): void {
+    this.onListUpdate.emit( this.originalList.filter( item => item.due !== null ) );
+  }
+
+  public filterOnlyToday(): void {
+    this.onListUpdate.emit( this.originalList.filter( item => item.due !== null ) );
+  }
+
+  public filterOnlyDue(): void {
+    this.onListUpdate.emit( this.originalList.filter( item => item.due !== null ) );
   }
 
 }

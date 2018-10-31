@@ -20,6 +20,7 @@ export class MisTarjetasListDateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log ( this.style );
     this.fechaDate = new Date( this.fecha );
     if ( this.fecha === null ) {
       this.style = 'badge badge-secondary';
@@ -28,25 +29,22 @@ export class MisTarjetasListDateComponent implements OnInit {
       this.style = 'badge badge-success';
       this.label = 'realizada';
     } else {
-      this.setDateStyles();
+      this.setStyleByStatus ( this.formatHelper.getStatusByDate( this.fechaDate ) );
     }
   }
 
-  private setDateStyles(): void {
-    switch ( this.formatHelper.compareDatesOnly( this.fechaDate, new Date() ) ) {
-      case 1:
-        this.style = 'badge badge-info';
+  private setStyleByStatus( status: string ): void {
+    this.style = 'badge badge-' + status;
+    switch ( status ) {
+      case 'danger':
+        this.label = 'vencida';
+        break;
+      case 'info':
         this.label = 'próximos días';
         break;
-      case -1:
-        this.style = 'badge badge-danger';
-        this.label = 'vencida';
-      break;
-      case 0:
-        this.style = 'badge badge-warning';
+      case 'warning':
         this.label = 'hoy';
         break;
     }
   }
-
 }

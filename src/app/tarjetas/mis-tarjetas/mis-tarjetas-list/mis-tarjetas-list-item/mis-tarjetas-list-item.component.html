@@ -1,4 +1,19 @@
+<div class="card-header">
+  <div class="float-right">
+    <app-mis-tarjetas-list-date [fecha]="card.due" [cerrado]="card.dueComplete"></app-mis-tarjetas-list-date>
+  </div>
+  <h4>{{ card.name }}</h4>
+</div>
 <div class="card-body">
-  <h5 class="card-title">{{ card.name }}</h5>
-  <p class="card-text">{{ card.desc }}</p>
+  <div class="card-subtitle">
+  </div>
+  <markdown ngPreserveWhitespaces class="card-text">
+      {{ card.desc }}
+  </markdown>
+  <a [href]="card.url" class="card-link" target="_blank">Enlace</a><fa name="cog" animation="spin"></fa>
+</div>
+<div class="card-footer">
+  <span *ngFor="let label of card.labels.sort()">
+    <span class="badge badge-secondary" [ngStyle]="{ 'background-color': formatHelper.getLabelColor( label.color ) }">{{ label.name }}</span>&nbsp;
+  </span>
 </div>
