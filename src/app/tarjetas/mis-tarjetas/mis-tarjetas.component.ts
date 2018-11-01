@@ -21,9 +21,8 @@ export class MisTarjetasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.trelloApiService.getCards( this.token ).subscribe( response => this.tarjetas = response );
-    this.trelloApiService.getBoards( this.token ).subscribe( response => this.boards = response );
-    this.trelloApiService.getOrganizations( this.token ).subscribe( response => this.organizations = response );
+    this.trelloApiService.getData( this.token );
+    this.trelloApiService.getCards.subscribe( response => this.tarjetas = response );
   }
 
 }
