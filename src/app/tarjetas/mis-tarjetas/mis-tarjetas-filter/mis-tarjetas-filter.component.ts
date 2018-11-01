@@ -31,6 +31,7 @@ export class MisTarjetasFilterComponent implements OnChanges {
     private trelloApiService: TrelloApiService
   ) {
     this.selectedBoards = [];
+    this.originalList = [];
     this.onListUpdate = new EventEmitter<any[]>();
     this.trelloApiService.getOrganizations.subscribe( response => this.organizations = response );
     this.trelloApiService.getBoards.subscribe( response => this.boards = response );

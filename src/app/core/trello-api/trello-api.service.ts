@@ -24,7 +24,7 @@ export class TrelloApiService {
   }
 
   public authorize(): void {
-    const post = 'http://localhost:4200/home';
+    const post = window.location.origin + '/home';
     const query = `authorize?key=${environment.trelloKey}&return_url=${post}&expiration=never&name=${environment.name}`;
     window.location.href = this.trelloApiUrl + query;
   }
