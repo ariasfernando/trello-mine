@@ -1,8 +1,0 @@
-<span>Mostrar&nbsp;</span>
-<div class="btn-group">
-    <button class="btn btn-sm" (click)="addNoDue()" [ngClass]="{ 'btn-light' : !filterAll, 'btn-dark': filterAll }">Todas</button>
-    <button class="btn btn-sm" (click)="removeNoDue()" [ngClass]="{ 'btn-light' : filterAll, 'btn-dark': !filterAll }">Con fecha</button>
-    <button class="btn btn-sm" (click)="filterOnlyNextDays()" [ngClass]="{ 'btn-light' : filterAll, 'btn-dark': !filterAll }">Próximos días</button> 
-    <button class="btn btn-sm" (click)="filterOnlyToday()" [ngClass]="{ 'btn-light' : filterAll, 'btn-dark': !filterAll }">Hoy</button>
-    <button class="btn btn-sm" (click)="filterOnlyDue()" [ngClass]="{ 'btn-light' : filterAll, 'btn-dark': !filterAll }">Vencidas</button>
-</div>

@@ -36,7 +36,6 @@ export class TrelloApiService {
   }
 
   public getBoardByID( id: string ): Observable<any>{
-    console.log ( id );
     const obs = this.getBoards.pipe(
       map( boards => boards.filter( board => board.id === id)[0]  )
     );

@@ -20,7 +20,6 @@ export class MisTarjetasListDateComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log ( this.style );
     this.fechaDate = new Date( this.fecha );
     if ( this.fecha === null ) {
       this.style = 'badge badge-secondary';
