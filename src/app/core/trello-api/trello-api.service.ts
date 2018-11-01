@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
 
@@ -11,10 +10,18 @@ export class TrelloApiService {
 
   private trelloApiUrl = 'https://api.trello.com/1/';
 
+  public getCards: Subject<any>;
+  public getBoards: Subject<any>;
+  public getOrganizations: Subject<any>;
+
   constructor(
-    private http: HttpClient,
-    private location: Location
-  ) { }
+    private http: HttpClient
+  ) {
+    this.getCards = new BehaviorSubject<any>( null );
+    this.getBoards = new BehaviorSubject<any>( null );
+    this.getOrganizations = new BehaviorSubject<any>( null );
+
+  }
 
   public authorize(): void {
     const post = 'http://localhost:4200/home';
@@ -22,11 +29,52 @@ export class TrelloApiService {
     window.location.href = this.trelloApiUrl + query;
   }
 
-  public getCards( token ): Observable<any>{
+  public getData( token ): void {
+    this._getCards( token );
+    this._getBoards( token );
+    this._getOrganizations( token );
+  }
+
+  public getBoardByID( id: string ): Observable<any>{
+    console.log ( id );
+    const obs = this.getBoards.pipe(
+      map( boards => boards.filter( board => board.id === id)[0]  )
+    );
+    return obs;
+  }
+
+  public getOrganizationByID( id: string ): Observable<any>{
+    return this.getOrganizations.pipe(
+      map( boards => boards.filter( board => board.id === id)[0]  )
+    )
+  }
+
+  private _getCards( token ): void{
     const query = '/members/me/cards?filter=visible&stickers=true&attachments=true&members=true';
     const identifier = `&${token}&key=${environment.trelloKey}`;
-    return this.http.get( this.trelloApiUrl + query + identifier).pipe(
+    this.http.get( this.trelloApiUrl + query + identifier).pipe(
       map( (cards: Array<any>) => cards.filter( card => card.dueComplete === false ) )
-    );
+    ).subscribe( response => {
+      this.getCards.next( response );
+    });
   }
+
+  private _getBoards( token ): void{
+    const query = '/members/me/boards';
+    const identifier = `?${token}&key=${environment.trelloKey}`;
+    this.http.get( this.trelloApiUrl + query + identifier).pipe()
+      .subscribe( response => {
+        this.getBoards.next( response );
+      });
+  }
+
+  private _getOrganizations( token ): void{
+    const query = '/members/me/organizations';
+    const identifier = `?${token}&key=${environment.trelloKey}`;
+    this.http.get( this.trelloApiUrl + query + identifier).pipe()
+      .subscribe( response => {
+        this.getOrganizations.next( response );
+      });
+  }
+
 }

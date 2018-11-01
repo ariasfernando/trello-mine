@@ -10,6 +10,8 @@ export class MisTarjetasComponent implements OnInit {
 
   private token: string;
   public tarjetas: any[];
+  public boards: any[];
+  public organizations: any[];
 
   constructor(
     private trelloApiService: TrelloApiService
@@ -19,7 +21,8 @@ export class MisTarjetasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.trelloApiService.getCards( this.token ).subscribe( response => this.tarjetas = response );
+    this.trelloApiService.getData( this.token );
+    this.trelloApiService.getCards.subscribe( response => this.tarjetas = response );
   }
 
 }

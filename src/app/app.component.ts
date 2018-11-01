@@ -79,22 +79,6 @@ export class AppComponent implements OnInit {
     return _.find( this.organizations, organization => organization.id === id );
   }
 
-  public sortCardsAsc() {
-    this.cards = this.cards.sort( ( a, b ) => {
-      const nameA = a.name.toUpperCase();
-      const nameB = b.name.toUpperCase();
-      return (nameA < nameB) ? 1 : (nameA > nameB) ? -1 : 0;
-    } );
-  }
-
-  public sortCardsDesc() {
-    this.cards = this.cards.sort( ( a, b ) => {
-      const nameA = a.name.toUpperCase();
-      const nameB = b.name.toUpperCase();
-      return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
-    } );
-  }
-
   public sortBoardAsc() {
     this.cards = this.cards.sort( ( a, b ) => {
       const boardA = this.getBoardByID( a.idBoard ).name.toUpperCase();

@@ -1,0 +1,21 @@
+<div class="card-header">
+  <b>{{ (organization ? organization.displayName : 'Tableros personales') }}</b> {{ board.name }}
+</div>
+<div class="card-body">
+  <div class="card-title">
+    <div class="float-right">
+      <app-mis-tarjetas-list-date [fecha]="card.due" [cerrado]="card.dueComplete"></app-mis-tarjetas-list-date>
+    </div>
+    <h5>{{ card.name }}&nbsp;<a [href]="card.url" target="_blank"><fa name="link"></fa></a></h5>
+  </div>
+<!--   <div class="card-text">
+    <button class="btn btn-primary btn-sm" (click)="showDetail = !showDetail">Descripción</button>
+    <markdown ngPreserveWhitespaces class="card-text" [ngClass]="{ 'collapse' : showDetail }">
+        {{ card.desc }}
+    </markdown>
+  </div> -->
+
+  <span *ngFor="let label of card.labels.sort()">
+    <span class="badge badge-secondary" [ngStyle]="{ 'background-color': formatHelper.getLabelColor( label.color ) }">{{ label.name }}</span>&nbsp;
+  </span>
+</div>
