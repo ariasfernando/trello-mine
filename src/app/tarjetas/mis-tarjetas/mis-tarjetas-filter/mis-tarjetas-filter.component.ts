@@ -39,7 +39,9 @@ export class MisTarjetasFilterComponent implements OnChanges {
 
   ngOnChanges() {
     this.originalList = this.list;
-    this.sendFilteredCards();
+    if( this.originalList !== null ){
+      this.sendFilteredCards();
+    }
   }
 
   onOrganizationChange( $event ): void {
