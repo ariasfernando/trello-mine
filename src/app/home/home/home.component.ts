@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.routes.fragment.subscribe( response => {
       if ( response !== null ) {
-        sessionStorage.setItem('token', response);
+        localStorage.setItem('token', response);
         this.router.navigate(['/mis-tarjetas']);
       }
     });
