@@ -24,7 +24,7 @@ export class TrelloApiService {
   }
 
   public authorize(): void {
-    const post = 'http://localhost:4200/home';
+    const post = window.location.origin + '/home';
     const query = `authorize?key=${environment.trelloKey}&return_url=${post}&expiration=never&name=${environment.name}`;
     window.location.href = this.trelloApiUrl + query;
   }
@@ -36,7 +36,6 @@ export class TrelloApiService {
   }
 
   public getBoardByID( id: string ): Observable<any>{
-    console.log ( id );
     const obs = this.getBoards.pipe(
       map( boards => boards.filter( board => board.id === id)[0]  )
     );

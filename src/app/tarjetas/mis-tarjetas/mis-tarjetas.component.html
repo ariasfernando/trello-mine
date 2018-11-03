@@ -1,3 +1,5 @@
 <!-- <app-mis-tarjetas-header [cantidadTarjetas]="tarjetas.length"></app-mis-tarjetas-header>
  -->
-<app-mis-tarjetas-list [tarjetas]="tarjetas"></app-mis-tarjetas-list>
+<app-mis-tarjetas-filter class="mb-4" [list]="originalCards" (onListUpdate)="onListUpdate( $event )"></app-mis-tarjetas-filter>
+
+<app-mis-tarjetas-list [cards]="cards"></app-mis-tarjetas-list>

@@ -1,41 +1,7 @@
 <div class="container" id="tabla">
   <div class="row">
     <div class="col">
-      <app-mis-tarjetas-filter class="mt-4 mb-4" [list]="originalList" (onListUpdate)="onListUpdate( $event )"></app-mis-tarjetas-filter>
-      
-      <!--<table *ngIf="tarjetas && tarjetas.length > 0" class="table">
-        <thead>
-          <tr>
-            <th>
-              <span>Nombre</span>&nbsp;
-              <div class="btn-group btn-group-sm" role="group">
-                <button class="btn btn-primary" (click)="sortCardsByName ( true )">Desc</button>
-                <button class="btn btn-primary" (click)="sortCardsByName ( false )">Asc</button>
-              </div>
-            </th>
-            <th>
-              <span>Vencimiento</span>&nbsp;
-              <div class="btn-group btn-group-sm" role="group">
-                <button class="btn btn-primary" (click)="sortCardsByDue ( true )">Desc</button>
-                <button class="btn btn-primary" (click)="sortCardsByDue ( false )">Asc</button>
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let card of tarjetas">
-            <td>
-              <b ngbTooltip="{{ card.desc }}" placement="right">{{ card.name }}</b>&nbsp;
-              <a target="_blank" href="{{ card.shortUrl }}" >Enlace</a>
-              <br/>
-            </td>
-            <td>
-              <app-mis-tarjetas-list-date [fecha]="card.due" [cerrado]="card.dueComplete"></app-mis-tarjetas-list-date>
-            </td>
-          </tr>
-        </tbody>
-      </table>-->
-      <app-mis-tarjetas-list-item *ngFor="let card of tarjetas" [card]="card"></app-mis-tarjetas-list-item>
+      <app-mis-tarjetas-list-item *ngFor="let card of cards" [card]="card"></app-mis-tarjetas-list-item>
     </div>
   </div>
 </div>
