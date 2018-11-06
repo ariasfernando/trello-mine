@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, HostBinding, OnChanges } from '@angular/core';
 import { FormatHelperService } from '../../../core/format-helper/format-helper.service';
 import { TrelloApiService } from '../../../core/trello-api/trello-api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-mis-tarjetas-filter',
@@ -28,7 +29,8 @@ export class MisTarjetasFilterComponent implements OnChanges {
 
   constructor(
     private formatHelper: FormatHelperService,
-    private trelloApiService: TrelloApiService
+    private trelloApiService: TrelloApiService,
+    private router: Router
   ) {
     this.selectedBoards = [];
     this.originalList = [];
@@ -44,32 +46,37 @@ export class MisTarjetasFilterComponent implements OnChanges {
     }
   }
 
-  onOrganizationChange( $event ): void {
+  public onOrganizationChange( $event ): void {
     this.organization = $event.srcElement.value;
     this.selectedBoards = this.getBoardsByOrganization( this.organization );
     this.sendFilteredCards();
   }
 
-  onBoardChange( $event ): void {
+  public onBoardChange( $event ): void {
     this.board = $event.srcElement.value;
     this.sendFilteredCards();
   }
 
-  onDateFilterChange( status: string ): void {
+  public onDateFilterChange( status: string ): void {
     this.status = status;
     this.sendFilteredCards();
   }
 
-  onSortChange( $event ): void {
+  public onSortChange( $event ): void {
     if ( $event.srcElement.value !== '') {
       this.sort = $event.srcElement.value;
       this.sendFilteredCards();
     }
   }
 
-  onSortOrderChange( desc: boolean ) {
+  public onSortOrderChange( desc: boolean ) {
     this.sortOrderDesc = desc;
     this.sendFilteredCards();
+  }
+
+  public onLogOut( ) {
+    localStorage.removeItem('token');
+    this.router.navigate(['/home']);
   }
 
   public isState( state: string ): boolean {

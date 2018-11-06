@@ -20,7 +20,7 @@ export class MisTarjetasComponent implements OnInit, OnChanges {
   ) {
     this.cards = [];
     this.originalCards = [];
-    this.token = sessionStorage.getItem('token');
+    this.token = localStorage.getItem('token');
   }
 
   ngOnInit() {

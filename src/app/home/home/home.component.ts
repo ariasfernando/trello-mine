@@ -18,12 +18,17 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.routes.fragment.subscribe( response => {
-      if ( response !== null ) {
-        sessionStorage.setItem('token', response);
-        this.router.navigate(['/mis-tarjetas']);
-      }
-    });
+    if( localStorage.getItem('token') !== null ) {
+      this.router.navigate(['/cards']);
+    } else {
+      this.routes.fragment.subscribe( response => {
+        if ( response !== null && response !== undefined) {
+          console.log( response, "response");
+          localStorage.setItem('token', response);
+          this.router.navigate(['/cards']);
+        }
+      });
+    }
   }
 
   public onLogIn( $event ): void {
