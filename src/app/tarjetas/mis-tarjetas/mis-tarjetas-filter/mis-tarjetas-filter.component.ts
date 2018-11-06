@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, HostBinding, OnChanges } from '
 import { FormatHelperService } from '../../../core/format-helper/format-helper.service';
 import { TrelloApiService } from '../../../core/trello-api/trello-api.service';
 import { Router } from '@angular/router';
+import { ICard } from '../../../model/card';
 
 @Component({
   selector: 'app-mis-tarjetas-filter',
@@ -48,6 +49,7 @@ export class MisTarjetasFilterComponent implements OnChanges {
 
   public onOrganizationChange( $event ): void {
     this.organization = $event.srcElement.value;
+    this.board = '';
     this.selectedBoards = this.getBoardsByOrganization( this.organization );
     this.sendFilteredCards();
   }
@@ -92,6 +94,8 @@ export class MisTarjetasFilterComponent implements OnChanges {
       cards = this.sortCardsByName( cards, this.sortOrderDesc );
     } else if ( this.sort === 'vencimiento' ) {
       cards = this.sortCardsByDue( cards, this.sortOrderDesc );
+    } else if ( this.sort === 'tablero' ) {
+      cards = this.sortCardsByBoard( cards, this.sortOrderDesc );
     }
     this.onListUpdate.emit( cards );
   }
@@ -148,5 +152,39 @@ export class MisTarjetasFilterComponent implements OnChanges {
       return desc ? descResult : ascResult;
     } );
 
+  }
+
+  private sortCardsByBoard( cards: any[], desc: boolean = true ): any[] {
+    const that = this;
+    return cards.sort( function( a: ICard, b: ICard ) {
+
+      const boardA = that.getBoardByID( a.idBoard );
+      const boardB = that.getBoardByID( b.idBoard );
+      const organizationNameA = boardA.idOrganization !== null ? that.getOrganizationByID( boardA.idOrganization ).name : '';
+      const organizationNameB = boardB.idOrganization !== null ? that.getOrganizationByID( boardB.idOrganization ).name : '';
+
+      if( organizationNameA > organizationNameB ) {
+        return desc ? -1 : 1;
+      } else if ( organizationNameA < organizationNameB ) {
+        return desc ? 1 : -1;
+      } else {
+        if( boardA.name > boardB.name ) {
+          return desc ? -1 : 1;
+        } else if ( boardA.name < boardB.name ) {
+          return desc ? 1 : -1;
+        } else {
+          return 0;
+        }
+      }
+
+    } );
+  }
+
+  private getBoardByID( id: string ) {
+    return this.boards.filter( board => board.id === id )[0];
+  }
+
+  private getOrganizationByID( id: string ) {
+    return this.organizations.filter( organization => organization.id === id )[0];
   }
 }

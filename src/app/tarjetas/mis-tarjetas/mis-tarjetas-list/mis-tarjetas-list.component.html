@@ -1,6 +1,7 @@
 <div class="container" id="tabla">
   <div class="row">
     <div class="col">
+      <h5 *ngIf="cards !== null">{{ cards.length }} tarjetas</h5>
       <app-mis-tarjetas-list-item *ngFor="let card of cards" [card]="card"></app-mis-tarjetas-list-item>
     </div>
   </div>

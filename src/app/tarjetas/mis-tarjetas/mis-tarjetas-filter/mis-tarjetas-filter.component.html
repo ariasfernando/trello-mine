@@ -20,11 +20,11 @@
         <div class="col mt-3">
             <form class="form-inline my-2 ml-2 my-lg-0 float-left">
                 <select class="form-control form-control-sm" (change)="onOrganizationChange( $event )" [disabled]="this.list === null">
-                    <option selected="">Organización</option>
+                    <option selected="" value="">Organización</option>
                     <option *ngFor="let organization of organizations" [value]="organization.id">{{ organization.displayName }}</option>
                 </select>
                 <select *ngIf="selectedBoards.length > 0" (change)="onBoardChange( $event )" class="form-control form-control-sm" [disabled]="this.list === null">
-                    <option selected="">Tablero</option>
+                    <option selected="" value="">Tablero</option>
                     <option *ngFor="let board of selectedBoards" [value]="board.id">{{ board.name }}</option>
                 </select>
             </form>
@@ -34,6 +34,7 @@
                     <option value="">Ordenar por...</option>
                     <option selected value="nombre">Nombre</option>
                     <option value="vencimiento">Vencimiento</option>
+                    <option value="tablero">Tablero</option>
                 </select>
                 <div class="btn-group">
                     <button type="button" class="btn btn-sm" (click)="onSortOrderChange( false )" [ngClass]="{ 'btn-light' : sortOrderDesc, 'btn-outline-light': !sortOrderDesc }">
