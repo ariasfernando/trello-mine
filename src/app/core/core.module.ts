@@ -6,7 +6,6 @@ import { TrelloApiService } from '../core/trello-api/trello-api.service';
 import { FormatHelperService } from './format-helper/format-helper.service';
 
 import { LoggedInGuard } from '../core/logged-in/logged-in.guard';
-import { LoggedOutGuard } from '../core/logged-out/logged-out.guard';
 
 import { MenuComponent } from './menu/menu.component';
 
@@ -18,8 +17,7 @@ import { MenuComponent } from './menu/menu.component';
   providers: [
     FormatHelperService,
     TrelloApiService,
-    LoggedInGuard,
-    LoggedOutGuard
+    LoggedInGuard
   ],
   declarations: [MenuComponent]
 })

@@ -9,6 +9,10 @@
         <button class="btn btn-sm" [disabled]="this.list === null" (click)="onDateFilterChange('danger')" [ngClass]="{ 'btn-danger' : isState('danger'), 'btn-outline-danger': !isState('danger') }">Vencidas</button>
     </div>
 
+    <button type="button" class="btn btn-lg btn-link" title="Salir" (click)="onLogOut()">
+        <fa name="sign-out"></fa>
+    </button>
+
 </nav>
 
 <div class="container">
