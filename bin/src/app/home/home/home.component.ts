@@ -19,11 +19,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     if( localStorage.getItem('token') !== null ) {
+      console.log( "item token has been set" )
       this.router.navigate(['/cards']);
     } else {
       this.routes.fragment.subscribe( response => {
         if ( response !== null && response !== undefined) {
-          console.log( response, "response");
+          console.log( "recieving item token", response );
           localStorage.setItem('token', response);
           this.router.navigate(['/cards']);
         }

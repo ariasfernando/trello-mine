@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LocationStrategy, HashLocationStrategy  } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
@@ -25,7 +26,9 @@ import { TarjetasModule } from './tarjetas/tarjetas.module';
     TarjetasModule,
     OrderModule
   ],
-  providers: [],
+  providers: [
+    // { provide: LocationStrategy, useClass: HashLocationStrategy }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
