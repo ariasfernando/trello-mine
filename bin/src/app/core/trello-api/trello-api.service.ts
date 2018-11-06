@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
+import { Location } from '@angular/common';
 
 @Injectable()
 export class TrelloApiService {
@@ -15,7 +16,8 @@ export class TrelloApiService {
   public getOrganizations: Subject<any>;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private location: Location
   ) {
     this.getCards = new BehaviorSubject<any>( null );
     this.getBoards = new BehaviorSubject<any>( null );
@@ -24,8 +26,8 @@ export class TrelloApiService {
   }
 
   public authorize(): void {
-    const post = window.location.origin + '/home';
-    const query = `authorize?key=${environment.trelloKey}&return_url=${post}&expiration=never&name=${environment.name}`;
+    const post = encodeURIComponent( window.location.href );
+    const query = `authorize?key=${environment.trelloKey}&return_url=${post}&expiration=never&name=${environment.name}&response_type=fragment`;
     window.location.href = this.trelloApiUrl + query;
   }
 
