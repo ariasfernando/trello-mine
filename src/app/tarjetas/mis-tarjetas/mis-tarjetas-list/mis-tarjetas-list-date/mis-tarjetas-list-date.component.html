@@ -1,0 +1,2 @@
+<span *ngIf="fecha === null">{{ label }}</span>
+<span *ngIf="fecha !== null" ngbTooltip="{{ fechaDate.toLocaleDateString() }}" placement="bottom">{{ label }}</span>

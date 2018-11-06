@@ -21,9 +21,12 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss",
+              "node_modules/font-awesome/css/font-awesome.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/marked/lib/marked.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -71,7 +74,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "scripts": [],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "assets": [
               "src/assets",
@@ -94,8 +97,8 @@
       }
     },
     "trello-mine-e2e": {
-      "root": "e2e",
-      "sourceRoot": "e2e",
+      "root": "",
+      "sourceRoot": "",
       "projectType": "application",
       "architect": {
         "e2e": {
@@ -123,6 +126,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
+      "styleext": "scss"
       "styleext": "css"
     },
     "@schematics/angular:directive": {

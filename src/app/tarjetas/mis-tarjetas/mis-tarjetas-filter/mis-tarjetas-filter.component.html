@@ -1,0 +1,55 @@
+<nav class="navbar navbar-dark bg-primary pb-3 pt-3 pl-3 pr-3">
+    <a class="navbar-brand" href="/mis-tarjetas">TrelloMine</a>
+
+    <div class="btn-group">
+        <button class="btn btn-sm" [disabled]="this.list === null" (click)="onDateFilterChange('primary')" [ngClass]="{ 'btn-light' : isState('primary'), 'btn-outline-light': !isState('primary') }">Todas</button>
+        <button class="btn btn-sm" [disabled]="this.list === null" (click)="onDateFilterChange('secondary')" [ngClass]="{ 'btn-secondary' :  isState('secondary'), 'btn-outline-secondary': ! isState('secondary') }">Sin fecha</button>
+        <button class="btn btn-sm" [disabled]="this.list === null" (click)="onDateFilterChange('info')" [ngClass]="{ 'btn-info' : isState('info'), 'btn-outline-info': !isState('info') }">Próximos días</button> 
+        <button class="btn btn-sm" [disabled]="this.list === null" (click)="onDateFilterChange('warning')" [ngClass]="{ 'btn-warning' : isState('warning'), 'btn-outline-warning': !isState('warning') }">Hoy</button>
+        <button class="btn btn-sm" [disabled]="this.list === null" (click)="onDateFilterChange('danger')" [ngClass]="{ 'btn-danger' : isState('danger'), 'btn-outline-danger': !isState('danger') }">Vencidas</button>
+    </div>
+
+    <button type="button" class="btn btn-lg btn-link" title="Salir" (click)="onLogOut()">
+        <fa name="sign-out"></fa>
+    </button>
+
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col mt-3">
+            <form class="form-inline my-2 ml-2 my-lg-0 float-left">
+                <select class="form-control form-control-sm" (change)="onOrganizationChange( $event )" [disabled]="this.list === null">
+                    <option selected="" value="">Organización</option>
+                    <option *ngFor="let organization of organizations" [value]="organization.id">{{ organization.displayName }}</option>
+                </select>
+                <select *ngIf="selectedBoards.length > 0" (change)="onBoardChange( $event )" class="form-control form-control-sm" [disabled]="this.list === null">
+                    <option selected="" value="">Tablero</option>
+                    <option *ngFor="let board of selectedBoards" [value]="board.id">{{ board.name }}</option>
+                </select>
+            </form>
+            
+            <form class="form-inline my-2 ml-2 my-lg-0 float-right">
+                <select class="form-control form-control-sm" (change)="onSortChange( $event )" [disabled]="this.list === null">
+                    <option value="">Ordenar por...</option>
+                    <option selected value="nombre">Nombre</option>
+                    <option value="vencimiento">Vencimiento</option>
+                    <option value="tablero">Tablero</option>
+                </select>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-sm" (click)="onSortOrderChange( false )" [ngClass]="{ 'btn-light' : sortOrderDesc, 'btn-outline-light': !sortOrderDesc }">
+                        <fa name="chevron-up"></fa>
+                    </button>
+                    <button type="button" class="btn btn-sm" (click)="onSortOrderChange( true )" [ngClass]="{ 'btn-light' : sortOrderDesc, 'btn-outline-light': sortOrderDesc }">
+                        <fa name="chevron-down"></fa>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
