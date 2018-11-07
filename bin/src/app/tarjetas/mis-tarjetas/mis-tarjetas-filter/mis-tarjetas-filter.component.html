@@ -1,7 +1,12 @@
 <nav class="navbar navbar-dark bg-primary pb-3 pt-3 pl-3 pr-3">
-    <a class="navbar-brand" href="/mis-tarjetas">TrelloMine</a>
 
-    <div class="btn-group">
+    <a class="navbar-brand order-0" href="/mis-tarjetas">TrelloMine</a>
+
+    <button type="button" class="btn btn-outline-secondary align-self-start order-1 order-md-2" title="Salir" (click)="onLogOut()">
+        <fa name="sign-out"></fa>
+    </button>
+
+    <div class="mis-tarjetas-filter__status btn-group order-2 order-md-1">
         <button class="btn btn-sm" [disabled]="this.list === null" (click)="onDateFilterChange('primary')" [ngClass]="{ 'btn-light' : isState('primary'), 'btn-outline-light': !isState('primary') }">Todas</button>
         <button class="btn btn-sm" [disabled]="this.list === null" (click)="onDateFilterChange('secondary')" [ngClass]="{ 'btn-secondary' :  isState('secondary'), 'btn-outline-secondary': ! isState('secondary') }">Sin fecha</button>
         <button class="btn btn-sm" [disabled]="this.list === null" (click)="onDateFilterChange('info')" [ngClass]="{ 'btn-info' : isState('info'), 'btn-outline-info': !isState('info') }">Próximos días</button> 
@@ -9,16 +14,12 @@
         <button class="btn btn-sm" [disabled]="this.list === null" (click)="onDateFilterChange('danger')" [ngClass]="{ 'btn-danger' : isState('danger'), 'btn-outline-danger': !isState('danger') }">Vencidas</button>
     </div>
 
-    <button type="button" class="btn btn-lg btn-link" title="Salir" (click)="onLogOut()">
-        <fa name="sign-out"></fa>
-    </button>
-
 </nav>
 
 <div class="container">
     <div class="row">
-        <div class="col mt-3">
-            <form class="form-inline my-2 ml-2 my-lg-0 float-left">
+        <div class="col mt-3 d-flex flex-column flex-sm-row justify-content-sm-between">
+            <form class="form-inline my-2 my-lg-0 ">
                 <select class="form-control form-control-sm" (change)="onOrganizationChange( $event )" [disabled]="this.list === null">
                     <option selected="" value="">Organización</option>
                     <option *ngFor="let organization of organizations" [value]="organization.id">{{ organization.displayName }}</option>
@@ -29,14 +30,14 @@
                 </select>
             </form>
             
-            <form class="form-inline my-2 ml-2 my-lg-0 float-right">
+            <form class="form-inline my-2 my-lg-0">
                 <select class="form-control form-control-sm" (change)="onSortChange( $event )" [disabled]="this.list === null">
                     <option value="">Ordenar por...</option>
                     <option selected value="nombre">Nombre</option>
                     <option value="vencimiento">Vencimiento</option>
                     <option value="tablero">Tablero</option>
                 </select>
-                <div class="btn-group">
+                <div class="btn-group mis-tarjetas-filter__order">
                     <button type="button" class="btn btn-sm" (click)="onSortOrderChange( false )" [ngClass]="{ 'btn-light' : sortOrderDesc, 'btn-outline-light': !sortOrderDesc }">
                         <fa name="chevron-up"></fa>
                     </button>
