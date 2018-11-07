@@ -15,7 +15,9 @@ export class HomeComponent implements OnInit {
     private trelloApiService: TrelloApiService,
     private routes: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
+    this.routes.queryParams.subscribe ( params => console.log( params['token'] ));
+  }
 
   ngOnInit() {
     if( localStorage.getItem('token') !== null ) {
