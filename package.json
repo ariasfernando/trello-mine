@@ -1,0 +1,34 @@
+{
+  "name": "trello-mine",
+  "version": "1.0.0",
+  "description": "Manage your Trello cards from your whole boards!",
+  "main": "index.js",
+  "bin": {
+    "trello-mine": "karma.conf.js"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mgnDev/trello-mine.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mgnDev/trello-mine/issues"
+  },
+  "homepage": "https://github.com/mgnDev/trello-mine#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

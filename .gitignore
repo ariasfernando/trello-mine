@@ -41,3 +41,4 @@
 # System Files
 /bin/.DS_Store
 /bin/Thumbs.db
+node_modules
